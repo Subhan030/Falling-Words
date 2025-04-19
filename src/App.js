@@ -57,7 +57,7 @@ function App() {
             if (wordObj.position > 90 && !gameOverTriggered.current) {
               gameOverTriggered.current = true;
               setGameOver(true);
-              sounds.background.stop(); // Stop background music when game ends
+              sounds.background.stop(); 
               if (soundEnabled) sounds.gameOver.play();
               return false;
             }
@@ -100,13 +100,11 @@ function App() {
     setSpeed(1);
     setGameOver(false);
     gameOverTriggered.current = false;
-    
-    // Restart background music if sound is enabled
+  
     if (soundEnabled) {
       sounds.background.play();
     }
     
-    // Focus input after a small delay
     setTimeout(() => {
       if (inputRef.current) {
         inputRef.current.focus();
@@ -114,7 +112,6 @@ function App() {
     }, 50);
   };
 
-  // Auto-focus input on mount
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
