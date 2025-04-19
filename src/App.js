@@ -2,12 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Howl } from 'howler';
 import './App.css';
 
-// Sound files (place these in your src/assets/ folder)
 import correctSound from './assets/correct.mp3';
 import gameOverSound from './assets/game-over.mp3';
 import backgroundMusic from './assets/background.mp3';
-
-// Initialize sounds
 const sounds = {
   correct: new Howl({ src: [correctSound], volume: 0.7 }),
   gameOver: new Howl({ src: [gameOverSound], volume: 0.7 }),
@@ -17,7 +14,6 @@ const sounds = {
     volume: 0.3
   })
 };
-
 const wordList = ["react", "javascript", "game", "coding", "developer", "keyboard", "speed", "challenge"];
 
 function App() {
@@ -30,7 +26,6 @@ function App() {
   const inputRef = useRef(null);
   const gameOverTriggered = useRef(false);
 
-  // Toggle sound
   const toggleSound = () => {
     if (!soundEnabled) {
       sounds.background.play();
@@ -40,7 +35,6 @@ function App() {
     setSoundEnabled(!soundEnabled);
   };
 
-  // Spawn new words
   useEffect(() => {
     if (gameOver) return;
     
@@ -52,7 +46,6 @@ function App() {
     return () => clearInterval(wordInterval);
   }, [gameOver]);
 
-  // Move words down and handle game over
   useEffect(() => {
     if (gameOver) return;
     
